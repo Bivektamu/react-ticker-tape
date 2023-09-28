@@ -2,20 +2,26 @@
     overflow: hidden;
     height:40px;
     #wrapper {
+      display: block;
+      overflow: auto;
+      // transform: translateX(-80%);
+    background: rebeccapurple;
+    &.animate {
     animation-name: move;
     animation-timing-function: linear;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-
-    @keyframes move {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(calc(-50% + 150px));
-        }
+    animation-duration: 2s;
+    animation-iteration-count: 3;
     }
+
+    // @keyframes move {
+    //     0% {
+    //         transform: translateX(0);
+    //     }
+
+    //     100% {
+    //         transform: translateX(calc(-50%  + 524px));
+    //     }
+    // }
   }
   p {
     // display: inline-block;
