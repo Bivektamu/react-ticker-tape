@@ -1,80 +1,55 @@
-import React, { useEffect, useState, useRef } from 'react'
-import './Ticker.scss'
-const Ticker = ({text}) => {
+import React, { useEffect, useState, useRef } from "react";
+import "./Ticker.scss";
+const Ticker = ({ text }) => {
+  const pRef = useRef();
 
-  const pRef = useRef()
-
-  const [pEle, setPele] = useState(pRef.current)
-
-  
-  let p = pRef.current
-  // wrapper.style.width = `${max}px`
-
-  useEffect(()=>{
-    if(pEle) {
-    initateTicerkTape()
+  const [pEle, setPele] = useState(pRef.current);
+  const offset = 0;
+  useEffect(() => {
+    if (pEle) {
+      initateTicerkTape();
+    } else {
+      setPele(pRef.current);
     }
-    else {
-      setPele(pRef.current)
-    }
-  }, [pEle])
-
+  }, [pEle]);
 
   function initateTicerkTape() {
-    
-    const wrapper = document.getElementById('wrapper')
-    let w = 0, max = window.innerWidth*2
+    const wrapper = document.getElementById("wrapper");
+    let w = 0,
+      max = window.innerWidth * 2;
 
+    const p = pEle;
 
-    const p = pEle
-    console.log(p.clientWidth)
-    // wrapper.style.width = `${max}px`
+    let i = 0;
+    do {
+      const newP = document.createElement("p");
+      newP.innerHTML = p.innerHTML;
+      wrapper.appendChild(newP);
+      i++;
+      w = p.clientWidth * (i + 0);
+    } while (w < max);
 
-    
-    // do {
-      for(let i = 0; i <3; i++) {
-      const newP = document.createElement('p')
-      newP.innerHTML = p.innerHTML
-      // newP.style.width = `${p.clientWidth}px`
-      wrapper.appendChild(newP)
-//       
-//       // console.log(wrapper.clientWidth)
-       w = p.clientWidth * (i+1)
-  }
-w= w + p.clientWidth
-wrapper.style.width = `${w}px`
-console.log(w)
+    console.log(i);
+    if (i % 2 == 0) {
+      const newP = document.createElement("p");
+      newP.innerHTML = p.innerHTML;
+      wrapper.appendChild(newP);
+      w = w + p.clientWidth;
+    }
+    w = w + p.clientWidth;
+    console.log(w, max);
 
-wrapper.classList.add('animate')
-
-wrapper.style.animation = `
-@keyframes move {
-  0% {
-      transform: translateX(0);
+    wrapper.style.width = `${w + offset}px`;
+    wrapper.classList.add("animate");
   }
 
-  100% {
-      transform: translateX(calc(-50%  + 524px));
-  }
-}
-`
-
-
-// 
-//        console.log(w)
-    // } while (w < max + p.clientWidth);
-
-
-  }
-
-  
   return (
     <div id="ticker_tape">
       <div id="wrapper">
-        <p ref={pRef}>{text}</p>
+        <p ref={pRef}>{text} </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Ticker
+export default Ticker;
