@@ -1,18 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Ticker.scss";
-const Ticker = ({ text }) => {
+const Ticker = ({ text, timer, bg, color }) => {
   const pRef = useRef();
 
   const [pEle, setPele] = useState(pRef.current);
-  const offset = 0;
+  const [wD, setWd] = useState(null);
+  const time = timer || 10
+  const bgC = bg || 'blueviolet'
+  const colorC = color || 'white'
+
+
+
+
+
   useEffect(() => {
-    if (pEle) {
+
+    const pTags = document.querySelectorAll('#wrapper > p')
+    if (pEle && wD && pTags.length == 1) {
       initateTicerkTape();
-    } else {
+    }
+    else {
       setPele(pRef.current);
     }
-  }, [pEle]);
 
+  }, [pEle, wD]);
+
+  
   function initateTicerkTape() {
     const wrapper = document.getElementById("wrapper");
     let w = 0,
@@ -26,21 +39,29 @@ const Ticker = ({ text }) => {
       newP.innerHTML = p.innerHTML;
       wrapper.appendChild(newP);
       i++;
-      w = p.clientWidth * (i + 0);
+      console.log(wD)
+      w = wD * (i + 0);
     } while (w < max);
 
-    console.log(i);
     if (i % 2 == 0) {
       const newP = document.createElement("p");
       newP.innerHTML = p.innerHTML;
       wrapper.appendChild(newP);
-      w = w + p.clientWidth;
+      w = w + wD;
     }
-    w = w + p.clientWidth;
-    console.log(w, max);
+    w = w + wD;
 
-    wrapper.style.width = `${w + offset}px`;
-    wrapper.classList.add("animate");
+    wrapper.style.width = `${w}px`;
+    wrapper.style.height = `${p.clientHeight}px`
+    console.log(wrapper.clientHeight)
+    console.log(p.clientHeight)
+    wrapper.style.animation = `move ${time}s linear infinite`
+  }
+
+  window.onload = function() {
+    setTimeout(() => {
+    setWd(pEle.clientWidth)
+  }, 1);
   }
 
   return (
