@@ -1,12 +1,10 @@
 #ticker_tape {
-  // height: 40px;
   overflow: hidden;
   
   #wrapper {
     display: block;
     min-width: 200vw;
     overflow: hidden;
-    background: blueviolet;
 
     @keyframes move {
       0% {
@@ -20,12 +18,16 @@
   }
   p {
     display: inline-block;
-    // display: block;
     padding: 0;
     margin: 0;
-    font-size: 40px;
     padding-right: 10px;
     line-height: 1.3;
-    color: white;
+    font-size: 40px;
   }
+}
+
+
+main {
+  width: 40vw;
+  margin: auto;
 }
