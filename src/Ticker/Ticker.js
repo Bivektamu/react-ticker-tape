@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Ticker.scss";
-const Ticker = ({ text, timer, bg, color, fix }) => {
+const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
   const pRef = useRef();
 
   const [pEle, setPele] = useState(pRef.current);
   const [wD, setWd] = useState(null);
-  const time = timer || 10;
+  const time = animationSpeed || 10;
   const bgC = bg || "blueviolet";
   const colorC = color || "white";
   useEffect(() => {

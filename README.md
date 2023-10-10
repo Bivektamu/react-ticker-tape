@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# React Ticker Tape
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A lightweight and flexible react library that allows you to build fully functional ricker tape. This react library is built using react.js, sass and adheres to latest ECMAScript specs. This library is intended to be used along with react.js.
+Supports IE10+, all major browsers and even mobile.
 
-## Available Scripts
+## Inspiration
 
-In the project directory, you can run:
+Originally, this was a pure vanilla js module which I had developed for one of my client as per their unique requirement. Now, I have upgraded this library to have more control over ticker tape such as text to be displayed, speed animation, background & color changes and positions to be displayed.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can install this package using below command:
 
-### `npm test`
+```bash
+npm install react-ticker-tape
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Note**: You are to use this library along with react.js, since it is a pure react component under the hood.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Import the Ticker Tape component in your desired react component using following code:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
 
-### `npm run eject`
+import {Ticker} from 'react-ticker-tape'
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Then, simply use it with below code.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
 
-## Learn More
+<Ticker text='Hi there! This is ticker tape version 1. Please check documentation on how to embed this library to your react project. Cheers!' />
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Props || Options
 
-### Code Splitting
+Below are the options to control Slider component as per requirement:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**`text {type: string}`**: text for ticker tape **`*Required`**
 
-### Analyzing the Bundle Size
+**`animationSpeed {type: integar}`**: sets the speed of the ticker animation, in seconds **`Default: 10 || 10s`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**`bg {type: string}`**: sets background color for ticker. You can pass name, hex or rgba code. **`Default: blueviolet`**
 
-### Making a Progressive Web App
+**`color {type: string}`**: sets color for ticker text. You can pass name, hex or rgba code. **`Default: white`**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**`fix {type: string}`**: sets the postion of ticker tape **`Default": null`** **`Values": top || bottom || left || right`**
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## App Info
+### Author
+Bivek Jang Gurung
