@@ -53,5 +53,5 @@ Below are the options to control Slider component as per requirement:
 **`fix {type: string}`**: sets the postion of ticker tape **`Default: null`** **`Values: top || bottom || left || right`**
 
 
-### Author
+## Author
 Bivek Jang Gurung
