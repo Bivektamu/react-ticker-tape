@@ -50,7 +50,7 @@ Below are the options to control Slider component as per requirement:
 
 **`color {type: string}`**: sets color for ticker text. You can pass name, hex or rgba code. **`Default: white`**
 
-**`fix {type: string}`**: sets the postion of ticker tape **`Default": null`** **`Values": top || bottom || left || right`**
+**`fix {type: string}`**: sets the postion of ticker tape **`Default: null`** **`Values: top || bottom || left || right`**
 
 
 ## App Info
