@@ -42,12 +42,14 @@ const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
     }
     w = w + wD;
 
+    const offsetW = ((wrapper.querySelectorAll('p')).length) * wD
+    console.log(offsetW)
+
     wrapper.style.width = `${w}px`;
     wrapper.style.height = `${p.clientHeight + 10}px`;
     wrapper.style.animation = `move ${time}s linear infinite`;
     wrapper.style.background = bgC;
     wrapper.style.color = colorC;
-    console.log();
     if (fix) {
       let parent = wrapper.parentElement;
       parent.style.position = "fixed";
@@ -79,7 +81,7 @@ const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
   }
 
   window.onload = function () {
-      setWd(pEle.clientWidth);
+      setWd(pEle.getBoundingClientRect().width);
   };
 
   return (
