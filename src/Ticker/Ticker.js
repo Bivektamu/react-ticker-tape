@@ -1,28 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Ticker.scss";
-const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
-  const pRef = useRef();
-
-  const [pEle, setPele] = useState(pRef.current);
+const Ticker = ({ text, animationSpeed, bg, color, fix, id }) => {
   const [wD, setWd] = useState(null);
   const time = animationSpeed || 10;
   const bgC = bg || "blueviolet";
   const colorC = color || "white";
-  useEffect(() => {
-    const pTags = document.querySelectorAll("#wrapper > p");
-    if (pEle && wD && pTags.length == 1) {
-      initateTicerkTape();
-    } else {
-      setPele(pRef.current);
+  const wRef = useRef(null);
+  
+  useEffect(()=> {
+    if(wRef)   {
+      const p = wRef.current.querySelector('p')
+      setWd(p.getBoundingClientRect().width);
     }
-  }, [pEle, wD]);
+  },[wRef])
+
+  useEffect(() => {
+    if(wRef && wD) {
+      initateTicerkTape()
+    }
+  }, [wRef, wD]);
 
   function initateTicerkTape() {
-    const wrapper = document.getElementById("wrapper");
+    const wrapper = wRef.current;
     let w = 0,
       max = window.innerWidth * 2;
 
-    const p = pEle;
+      const p = wrapper.querySelector('p')
 
     let i = 0;
     do {
@@ -30,7 +33,6 @@ const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
       newP.innerHTML = p.innerHTML;
       wrapper.appendChild(newP);
       i++;
-      console.log(wD);
       w = wD * (i + 0);
     } while (w < max);
 
@@ -40,24 +42,24 @@ const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
       wrapper.appendChild(newP);
       w = w + wD;
     }
-    w = w + wD;
-
-    const offsetW = ((wrapper.querySelectorAll('p')).length) * wD
-    console.log(offsetW)
+    w = w + wD + 2;
 
     wrapper.style.width = `${w}px`;
     wrapper.style.height = `${p.clientHeight + 10}px`;
     wrapper.style.animation = `move ${time}s linear infinite`;
     wrapper.style.background = bgC;
     wrapper.style.color = colorC;
+
     if (fix) {
       let parent = wrapper.parentElement;
       parent.style.position = "fixed";
       switch (fix) {
         case "top":
+          parent.style.left = "0px";
           parent.style.top = "0px";
           break;
         case "bottom":
+          parent.style.left = "0px";
           parent.style.bottom = "0px";
           break;
 
@@ -81,13 +83,16 @@ const Ticker = ({ text, animationSpeed, bg, color, fix }) => {
   }
 
   window.onload = function () {
-      setWd(pEle.getBoundingClientRect().width);
+    if(wRef)   {
+      const p = wRef.current.querySelector('p')
+      setWd(p.getBoundingClientRect().width);
+    }
   };
 
   return (
-    <div id="ticker_tape">
-      <div id="wrapper">
-        <p ref={pRef}>{text} </p>
+    <div className="ticker_tape">
+      <div ref={wRef} className="wrapper">
+        <p>{text}</p>
       </div>
     </div>
   );
