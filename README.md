@@ -1,7 +1,7 @@
 # React Ticker Tape
 
 A lightweight and flexible react library that allows you to build fully functional ticker tape. This react library is built using react.js, sass and adheres to latest ECMAScript specs. This library is intended to be used along with react.js.
-Supports IE10+, all major browsers and even mobile. You can view live demo here[https://tickertapedemo.netlify.app/].
+Supports IE10+, all major browsers and even mobile. You can view live demo [here](https://tickertapedemo.netlify.app/).
 
 ## Inspiration
 
